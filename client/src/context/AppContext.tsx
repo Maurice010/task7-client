@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, useMemo, ReactNode } from "react";
 
 export type CartItem = {
   productId: number;
@@ -66,10 +66,16 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     localStorage.removeItem("cartItems");
   };
 
+  const contextValue = useMemo(() => ({
+    cartItems,
+    addToCart,
+    increaseQuantity,
+    decreaseQuantity,
+    clearCart
+  }), [cartItems]);
+
   return (
-    <AppContext.Provider
-      value={{ cartItems, addToCart, increaseQuantity, decreaseQuantity, clearCart }}
-    >
+    <AppContext.Provider value={contextValue}>
       {children}
     </AppContext.Provider>
   );

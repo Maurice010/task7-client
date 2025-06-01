@@ -19,7 +19,7 @@ export default function LoginPage() {
         localStorage.setItem("token", data.token);
         navigate("/");
       } else {
-        alert(data.error || "Login failed");
+        alert(data.error ?? "Login failed");
       }
     } catch {
       alert("Network error");

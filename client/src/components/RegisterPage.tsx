@@ -19,7 +19,7 @@ export default function RegisterPage() {
         navigate("/login");
       } else {
         const data = await res.json();
-        alert(data.error || "Błąd rejestracji");
+        alert(data.error ?? "Błąd rejestracji");
       }
     } catch {
       alert("Błąd połączenia");

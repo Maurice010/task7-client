@@ -20,12 +20,12 @@ export default function Cart() {
     <div style={{ padding: "2rem" }}>
       <h1>Koszyk</h1>
       {cartItems.length === 0 && <p>Koszyk jest pusty</p>}
-      {cartItems.map((item, index) => (
-        <div key={index} style={{ marginBottom: "1rem" }}>
-          <p>Produkt ID: {item.productId}</p>
-          <p>Ilość: {item.quantity}</p>
-          <button onClick={() => increaseQuantity(item.productId)}>+</button>
-          <button onClick={() => decreaseQuantity(item.productId)}>-</button>
+      {cartItems.map((item) => (
+        <div key={item.productId} style={{ marginBottom: "1rem" }}>
+         <p>Produkt ID: {item.productId}</p>
+         <p>Ilość: {item.quantity}</p>
+         <button onClick={() => increaseQuantity(item.productId)}>+</button>
+         <button onClick={() => decreaseQuantity(item.productId)}>-</button>
         </div>
       ))}
       {cartItems.length > 0 && (

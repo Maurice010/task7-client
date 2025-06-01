@@ -13,6 +13,7 @@ export default function Payment() {
       setMessage(`Transakcja zaakceptowana. Do zapłaty: ${result.total} zł`);
       clearCart();
     } catch (err) {
+      console.error("Payment error:", err);
       setMessage("Błąd podczas płatności.");
     }
   };
@@ -24,8 +25,8 @@ export default function Payment() {
       {cartItems.length > 0 && (
         <>
           <ul>
-            {cartItems.map((item, index) => (
-              <li key={index}>
+            {cartItems.map((item) => (
+              <li key={item.productId}>
                 Produkt ID: {item.productId} – Ilość: {item.quantity}
               </li>
             ))}
